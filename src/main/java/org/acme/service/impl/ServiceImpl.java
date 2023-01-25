@@ -1,5 +1,6 @@
 package org.acme.service.impl;
 
+import io.quarkus.panache.common.Parameters;
 import org.acme.model.Persona;
 import org.acme.repository.Repository;
 import org.acme.service.Service;
@@ -41,7 +42,20 @@ public class ServiceImpl implements Service {
 
     @Override
     public Persona modificar(Persona persona) {
-        repository.persist(persona);
-        return persona;
+        repository.update("name= :name ," +
+                        "lastName= :lastName ," +
+                        "age= :age ," +
+                        "country= :country ," +
+                        "DNI= :DNI " +
+                        " where id = :id",
+                       Parameters.with("name", persona.getName())
+                        .and("id",persona.getId())
+                        .and("lastName",persona.getLastName())
+                        .and("DNI",persona.getDNI())
+                        .and("age",persona.getAge())
+                        .and("country",persona.getCountry()));
+
+        return  persona;
+
     }
 }
