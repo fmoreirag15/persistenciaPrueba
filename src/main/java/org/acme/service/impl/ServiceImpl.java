@@ -16,12 +16,10 @@ public class ServiceImpl implements Service {
     @Override
     public Boolean guardar(Persona persona) {
         if(repository.findByIdPersona(persona.getDNI())) {
-            if (repository.isPersistent(persona)) {
+
                 repository.persist(persona);
                 return true;
-            } else {
-                return false;
-            }
+
         }else {
             return false;
         }

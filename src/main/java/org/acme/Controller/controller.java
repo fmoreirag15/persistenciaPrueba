@@ -4,6 +4,7 @@ import org.acme.model.Persona;
 import org.acme.service.Service;
 
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
 import javax.ws.rs.*;
@@ -22,6 +23,7 @@ public class controller {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
+    @Transactional
     public Response guardar(Persona persona) {
         Set<ConstraintViolation<Persona>> violations = validator.validate(persona);
         if (violations.isEmpty()) {
@@ -40,7 +42,6 @@ public class controller {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response listar(@PathParam("edad")  Integer edad) {
-
         return Response.ok().entity(service.lista(edad)).build();
     }
 
@@ -48,6 +49,7 @@ public class controller {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
+    @Transactional
     public Response modificar(Persona persona) {
         Set<ConstraintViolation<Persona>> violations = validator.validate(persona);
         if (violations.isEmpty()) {
