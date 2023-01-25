@@ -35,7 +35,7 @@ public class controller {
                     .collect(Collectors.joining(","))).build();}
 
     }
-    @Path("/list")
+    @Path("/list/{edad}")
     @GET
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
