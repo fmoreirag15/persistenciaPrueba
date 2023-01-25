@@ -1,12 +1,12 @@
 package org.acme.service;
 
-import org.acme.model.Producto;
+import org.acme.model.Persona;
 
 import java.util.List;
 
 public interface Service {
-    Boolean guardar(Producto producto);
-    Producto buscarporID(Integer id);
-    List<Producto> lista();
-    Producto modificar(Producto producto);
+    Boolean guardar(Persona persona);
+    Persona buscarporID(Integer id);
+    List<Persona> lista();
+    Persona modificar(Persona persona);
 }

@@ -1,6 +1,6 @@
 package org.acme.Controller;
 
-import org.acme.model.Producto;
+import org.acme.model.Persona;
 import org.acme.service.Service;
 
 import javax.inject.Inject;
@@ -22,10 +22,10 @@ public class controller {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response guardar(Producto producto) {
-        Set<ConstraintViolation<Producto>> violations = validator.validate(producto);
+    public Response guardar(Persona persona) {
+        Set<ConstraintViolation<Persona>> violations = validator.validate(persona);
         if (violations.isEmpty()) {
-           return Response.ok().entity(service.guardar(producto)).build();
+           return Response.ok().entity(service.guardar(persona)).build();
         }else
         {
             return Response.status(500).entity(violations.stream()
@@ -48,10 +48,10 @@ public class controller {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response modificar(Producto producto) {
-        Set<ConstraintViolation<Producto>> violations = validator.validate(producto);
+    public Response modificar(Persona persona) {
+        Set<ConstraintViolation<Persona>> violations = validator.validate(persona);
         if (violations.isEmpty()) {
-            return  Response.ok().entity(service.modificar(producto)).build();
+            return  Response.ok().entity(service.modificar(persona)).build();
         }else
         {
             return Response.status(500).entity(violations.stream()

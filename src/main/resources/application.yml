@@ -1,7 +1,7 @@
 quarkus:
     hibernate-orm:
         database:
-            generation: update
+            generation: drop and create
     http:
         port: 8082
     datasource:
