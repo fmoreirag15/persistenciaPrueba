@@ -36,7 +36,7 @@ public class ServiceImpl implements Service {
         for(int i=0; personaList.size()>i; i++ )
         {
             pesonaedad= Integer.parseInt(personaList.get(i).getAge());
-            if(pesonaedad>edad)
+            if(edad>=pesonaedad)
             {
                 personaList.remove(i);
             }
