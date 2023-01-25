@@ -1,7 +1,7 @@
 quarkus:
     hibernate-orm:
         database:
-            generation: drop and create
+            generation: update
     http:
         port: 8082
     datasource:
@@ -10,4 +10,4 @@ quarkus:
             url: jdbc:mysql://localhost:3306/prueb0a?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
             driver : com.mysql.cj.jdbc.Driver
         username: root
-        password: F123456@
+        password: Fmoreirag15@

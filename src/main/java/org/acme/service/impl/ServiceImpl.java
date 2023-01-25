@@ -29,12 +29,23 @@ public class ServiceImpl implements Service {
 
     @Override
     public Persona buscarporID(Integer id) {
+
         return repository.findById(id);
     }
 
     @Override
-    public List<Persona> lista() {
-        return repository.listAll();
+    public List<Persona> lista(Integer edad) {
+        int pesonaedad=0;
+        List<Persona> personaList=repository.listAll();
+        for(int i=0; personaList.size()>i; i++ )
+        {
+            pesonaedad= Integer.parseInt(personaList.get(i).getAge());
+            if(pesonaedad>edad)
+            {
+                personaList.remove(i);
+            }
+        }
+        return personaList;
     }
 
     @Override

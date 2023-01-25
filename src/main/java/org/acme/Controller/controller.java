@@ -39,9 +39,9 @@ public class controller {
     @GET
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listar() {
+    public Response listar(@PathParam("edad")  Integer edad) {
 
-        return Response.ok().entity(service.lista()).build();
+        return Response.ok().entity(service.lista(edad)).build();
     }
 
     @Path("/update")
