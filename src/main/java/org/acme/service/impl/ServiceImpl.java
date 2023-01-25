@@ -7,6 +7,7 @@ import org.acme.service.Service;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @ApplicationScoped
 public class ServiceImpl implements Service {
@@ -33,15 +34,9 @@ public class ServiceImpl implements Service {
     public List<Persona> lista(Integer edad) {
         int pesonaedad=0;
         List<Persona> personaList=repository.listAll();
-        for(int i=0; personaList.size()>i; i++ )
-        {
-            pesonaedad= Integer.parseInt(personaList.get(i).getAge());
-            if(edad>=pesonaedad)
-            {
-                personaList.remove(i);
-            }
-        }
-        return personaList;
+        return  personaList.stream()
+                .filter(c -> Integer.parseInt(c.getAge())>=edad)
+                .collect(Collectors.toList());
     }
 
     @Override
