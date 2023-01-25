@@ -26,10 +26,8 @@ public class ServiceImpl implements Service {
             return false;
         }
     }
-
     @Override
     public Persona buscarporID(Integer id) {
-
         return repository.findById(id);
     }
 
